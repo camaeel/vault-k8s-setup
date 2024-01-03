@@ -20,9 +20,9 @@ kind create cluster --config kind-config.yml
 ### Cert manager
 
 ```shell
-helm repo add jetstack https://charts.jetstack.io
+helm repo add cert-manager https://charts.jetstack.io
 helm repo update
-helm upgrade --install cert-manager jetstack/cert-manager \
+helm upgrade --install cert-manager cert-manager/cert-manager \
   --namespace cert-manager \
   --create-namespace \
   --set installCRDs=true \

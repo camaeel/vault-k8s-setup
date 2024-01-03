@@ -53,16 +53,16 @@ server:
           drop:
             - ALL
       command:
-        - bank-vaults
+        - /bin/sh
+        - -c
       args:
-        - unseal
-        - --init
-        - --mode
-        - k8s
-        - --k8s-secret-namespace
-        - vault
-        - --k8s-secret-name
-        - vault-unseal-keys
+        - |
+          if [[ $HOSTNAME == "vault-0" ]]; then
+            INIT="--init"
+          fi
+          bank-vaults unseal $INIT --mode k8s \
+            --k8s-secret-namespace vault \
+            --k8s-secret-name vault-unseal-keys
       env:
         - name: VAULT_CACERT
           value: /vault/tls/ca.crt
