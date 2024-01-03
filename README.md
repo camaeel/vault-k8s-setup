@@ -71,10 +71,20 @@ helm upgrade --install --namespace vault \
 ```
 
 ## Access vault
+Add to your `/etc/hosts` file:
+```
+127.0.0.1 vault.cluster.local
+```
+
 Set access parameters:
 ```shell
-export VAULT_ADDR=https://vault.cluster.local:30443
+export VAULT_ADDR=https://vault.cluster.local:32443
 export VAULT_TOKEN=`kubectl get secret -n vault vault-unseal-keys -ojson | jq -r '.data["vault-root"]' | base64 -d`
+```
+
+Execute commands:
+```shell
+vault secrets list -tls-skip-verify
 ```
 
 ## Cleanup

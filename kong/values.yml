@@ -1,10 +1,6 @@
-gateway:
-  enabled: false
-controller:
-  enabled: true
-  ingressController:
-    ingressClassAnnotations:
-      ingressclass.kubernetes.io/is-default-class: "true"
+ingressController:
+  ingressClassAnnotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
 proxy:
   type: NodePort
   http:
