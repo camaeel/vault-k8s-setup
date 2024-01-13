@@ -1,6 +1,8 @@
 # vault-k8s-setup
 This project shows how to setup vault in HA mode with raft storage in Kubernetes cluster with automated unseal.
 
+This project used bank-vaults. But since support of this utility for integrated raft storage is not working in a stable manner I don't encourage anyone for using this setup. You may of course try. 
+
 ## Prerequisites
 
 1. Kind cluster (any other kubernetes cluster should be fine as well)
